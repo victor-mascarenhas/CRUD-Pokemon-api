@@ -12,6 +12,7 @@ const config = require('config');
 //@acess  Public
 router.post('/', auth, async (req, res, next) => {
     try {
+        req.body.user = req.user.id
         let team = new Teams(req.body)
         await team.save()
         
@@ -35,7 +36,7 @@ router.post('/', auth, async (req, res, next) => {
 //@access  Public
 router.get('/', async (req, res, next) => {
     try {
-        let team = await Teams.find().populate('pokemons user')
+        let team = await Teams.find({}).populate('user pokemon1 pokemon2 pokemon3 pokemon4 pokemon5 pokemon6')
        
         res.json(team)
     } catch (err) {
@@ -51,7 +52,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const id = req.params.id
-        let team = await Teams.findOne({ _id: id }).populate('pokemons user')
+        let team = await Teams.findOne({ _id: id }).populate('user pokemon1 pokemon2 pokemon3 pokemon4 pokemon5 pokemon6')
                    
         if (team) {
             res.json(team)

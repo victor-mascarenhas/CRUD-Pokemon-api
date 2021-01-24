@@ -7,14 +7,34 @@ const TeamsSchema = new Schema({
         required : true,
         unique: true
     },    
-    pokemons: [{
+    pokemon1: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'pokemons'
-    }],
-    user: [{
+    },
+    pokemon2: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-    }]
+        ref: 'pokemons'
+    },
+    pokemon3: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pokemons'
+    },
+    pokemon4: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pokemons'
+    },
+    pokemon5: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pokemons'
+    },
+    pokemon6: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pokemons'
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    }
     
 });
 

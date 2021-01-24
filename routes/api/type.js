@@ -71,7 +71,7 @@ router.delete('/:id', auth, admin, async (req, res, next) => {
         const id = req.params.id
         let type = await Types.findOne({ _id: id })
         if (type) {
-            const pokemonByType = await Pokemons.find({ type: type._id })
+            const pokemonByType = await Pokemons.find({ type1: type._id, type2: type._id })
             if (pokemonByType.lentgh > 0) {
                 res.status(400).send({ "error": MSGS.CANTDELETE })
             } else {
